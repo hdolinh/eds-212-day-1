@@ -1,0 +1,96 @@
+---
+title: "eds-212-day-1"
+author: "Halina Do-Linh"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+### This is my first heading
+
+## This is my second heading
+
+# This is the largest heading
+
+###### This is the smallest heading
+
+*This is my italicized sentence.*
+
+**Hello bold**
+
+Equation is e = mc^2^
+
+Another equation is e = mc~2~
+
+A list of groceries
+
+-   apple
+
+-   cereal
+
+-   chicken
+
+![Funny Doggo Picture](silly-dog.jpg)
+
+## Adding a code chunk 
+```{r}
+
+ W <- function(a, L, b) {
+  
+  a * (L) ^ b
+  
+}
+
+milkfish <- W(a = 0.0905, 
+             L = 60,
+             b = 2.52)
+
+giant_trev <- W(a = 0.0353,
+                L = 60,
+                b = 3.05)
+
+great_bar <- W(a = 0.0181,
+               L = 60,
+               b = 3.27)
+
+```
+
+## Now I am making a sequence for fish length
+```{r}
+
+fish_length <- seq(from = 0, to = 200, by = 1)
+
+```
+
+## Estimate giant barracuda weight
+```{r}
+
+barracuda_weight <- W(a = 0.0181,
+                      b = 3.27,
+                      L = fish_length)
+
+```
+
+## Bind the lengths and estimate barracuda lengths
+```{r}
+
+great_bar_df <- data.frame(fish_length, barracuda_weight)
+```
+
+## Create giant barracuda graph
+```{r}
+
+ggplot(data = great_bar_df, aes(x = fish_length, y = barracuda_weight)) +
+  geom_point() + 
+  labs(x = "Barracuda Length (cm)",
+       y = "Barracuda Weight (g)",
+       title = "Barracuda Length and Weight in Hawaiian Estuaries")
+ 
+
+```
+
